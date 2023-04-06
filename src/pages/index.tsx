@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import Image from "next/image";
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ["latin"] });
+// import { Inter } from 'next/font/google';
+// const inter = Inter({ subsets: ["latin"] });
 import Login from '@/components/login/Login';
 import ResponsiveAppBar from '@/components/header';
 import { Button, Grid, TextField, Typography } from "@mui/material";
@@ -40,5 +39,3 @@ export default function Home() {
     </>
   );
 }
-
-
