@@ -1,0 +1,99 @@
+.formWrapper {
+  width: 350px;
+  padding: 5px;
+  /* box-shadow: 4px 4px 12px 1px; */
+}
+
+.formConatiner {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: pink;
+  text-align: center;
+  background-color: rgb(85 96 138);
+  box-shadow: 4px 4px 12px 1px;
+}
+
+.formConatiner > h1 {
+  padding: 10px 0 30px;
+  color: white;
+}
+
+.inputField {
+  padding: 0 2px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputField > label {
+  color: white;
+  text-align: left;
+}
+
+.inputField > input {
+  width: 64%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: pink;
+}
+
+.inputField > input:focus {
+  outline: none;
+}
+
+.formConatiner > form > button {
+  margin: 0 0 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 25px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.6px;
+  /* background-color: bisque; */
+   background-color: rgb(149, 149, 214);
+  cursor: pointer;
+}
+
+.formConatiner > hr {
+  background-color: rgb(149, 149, 214);
+}
+
+.toSignUp {
+  padding: 20px 0 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.toSignUp > span {
+  color: rgb(149, 149, 214);
+  cursor: pointer;
+}
+
+/* @media only screen and (max-width: 600px) {
+  
+} */
+
+@media only screen and (max-width: 600px) {
+  .formWrapper {
+    width: 305px;
+  }
+
+  .formConatiner {
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 281px) {
+  .formWrapper {
+    width: 285px;
+  }
+
+  .formConatiner {
+    padding: 2px;
+  }
+}
