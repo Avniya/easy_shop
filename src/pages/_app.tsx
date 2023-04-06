@@ -8,8 +8,9 @@ import { render } from 'react-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ThemeProvider } from '@mui/material/styles';
-import {theme} from "../styles/theme"
+import { theme } from "../styles/theme"
 import { CssBaseline, Paper } from '@mui/material';
+import MainLayout from "@/layout/mainLayout";
 
 export const muiCache = createCache({
   key: 'mui',
@@ -34,9 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <CacheProvider value={muiCache}>
-        <Component {...pageProps} />
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
       </CacheProvider>
     </ThemeProvider>
-  // <Component {...pageProps} />
+    // <Component {...pageProps} />
   )
 }
