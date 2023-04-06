@@ -8,25 +8,14 @@ import { render } from 'react-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ThemeProvider } from '@mui/material/styles';
+import {theme} from "../styles/theme"
+import { CssBaseline, Paper } from '@mui/material';
 
 export const muiCache = createCache({
   key: 'mui',
   prepend: true,
 });
 
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#556cd6',
-    },
-    secondary: {
-      main: '#19f546',
-    },
-    error: {
-      main: red.A400,
-    },
-  },
-});
 
 
 //NOTE: Don't use <StyledEngineProvider injectFirst/>
@@ -43,6 +32,7 @@ export const theme = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <CacheProvider value={muiCache}>
         <Component {...pageProps} />
       </CacheProvider>
