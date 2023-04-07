@@ -16,7 +16,7 @@ import { styled } from '@mui/material/styles';
 import { purple, grey } from '@mui/material/colors';
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'My Orders', 'Logout'];
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
