@@ -5,7 +5,8 @@ import { createTheme } from '@mui/material/styles';
 
 import { red } from '@mui/material/colors';
 import { render } from 'react-dom';
-import { CacheProvider } from '@emotion/react';
+import createEmotionCache from "@/utils/createEmotionCache";
+import { CacheProvider, EmotionCache } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "../styles/theme"
@@ -17,7 +18,7 @@ export const muiCache = createCache({
   prepend: true,
 });
 
-
+const clientSideEmotionCache = createEmotionCache();
 
 //NOTE: Don't use <StyledEngineProvider injectFirst/>
 // render(
@@ -29,12 +30,16 @@ export const muiCache = createCache({
 //   document.getElementById('root'),
 // );
 
+export interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
 
-export default function App({ Component, pageProps }: AppProps) {
+
+export default function App({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <CacheProvider value={muiCache}>
+      <CacheProvider value={emotionCache}>
         <MainLayout>
           <Component {...pageProps} />
         </MainLayout>
