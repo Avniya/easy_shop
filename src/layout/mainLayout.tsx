@@ -1,6 +1,7 @@
 import Navbar from "@/components/header";
 import { Footer } from "@/components/footer";
 import Paper from "@mui/material/Paper";
+import ProductsPage from "../pages/products/ProductsPage";
 
 export default function MainLayout(props: { children?: any }) {
     return (
@@ -16,6 +17,7 @@ export default function MainLayout(props: { children?: any }) {
             >
                 {props?.children}
             </Paper>
+            <ProductsPage /> 
             <Footer />
         </div>
     );
