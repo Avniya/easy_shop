@@ -1,11 +1,13 @@
-import SelectTheme from "@/components/selectTheme";
+import Login from "@/components/login/Login";
+// import SelectTheme from "@/components/selectTheme";
 
 export default function Home() {
   
   return (
     <div>
       <main>
-        <SelectTheme />
+        <Login />
+        {/* <SelectTheme /> */}
       </main>
     </div>
   );
