@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 
 export default function MainLayout(props: { children?: any }) {
     return (
-        <div>
+        <>
             <Navbar />
             <Paper
                 sx={{
@@ -17,6 +17,6 @@ export default function MainLayout(props: { children?: any }) {
                 {props?.children}
             </Paper>
             <Footer />
-        </div>
+        </>
     );
 }
