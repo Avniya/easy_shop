@@ -12,6 +12,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "../styles/theme"
 import { CssBaseline, Paper } from '@mui/material';
 import MainLayout from "@/layout/mainLayout";
+import { Provider } from "react-redux";
+import store from '@/app/store';
 
 export const muiCache = createCache({
   key: 'mui',
@@ -37,7 +39,8 @@ export interface MyAppProps extends AppProps {
 
 export default function App({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
   return (
-    <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
       <CssBaseline />
       <CacheProvider value={emotionCache}>
         <MainLayout>
@@ -45,6 +48,7 @@ export default function App({ Component, emotionCache = clientSideEmotionCache, 
         </MainLayout>
       </CacheProvider>
     </ThemeProvider>
+    </Provider>
     // <Component {...pageProps} />
   )
 }
