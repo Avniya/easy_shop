@@ -5,10 +5,11 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
+import NextLink from "next/link";
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button, {ButtonProps} from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
@@ -16,16 +17,18 @@ import { styled } from '@mui/material/styles';
 import { purple, grey } from '@mui/material/colors';
 
 const pages = ['Products', 'Pricing', 'Blog'];
+
+
 const settings = ['Profile', 'Account', 'My Orders', 'Logout'];
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-    color: theme.palette.getContrastText(purple[500]),
-    // backgroundColor: purple[500],
-    textDecorationColor: grey[500],
-    '&:hover': {
-      backgroundColor: purple[700],
-    },
-  }));
+  color: theme.palette.getContrastText(purple[500]),
+  // backgroundColor: purple[500],
+  textDecorationColor: grey[500],
+  '&:hover': {
+    backgroundColor: purple[700],
+  },
+}));
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -47,28 +50,29 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="sticky" sx={{border:'none', boxShadow:'none'}} >
-      <Container maxWidth="xl" sx={{border:'none', boxShadow:'none', backgroundColor:'transparent'}}>
+    <AppBar position="sticky" sx={{ border: 'none', boxShadow: 'none' }} >
+      <Container maxWidth="xl" sx={{ border: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
+          <NextLink href="/" passHref style={{ textDecoration: 'none' }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="p"
+              // href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              LOGO
+            </Typography>
+          </NextLink>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -99,9 +103,12 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" sx={{ color: 'black'}}>{page}</Typography>
-                </MenuItem>
+                <NextLink href={page.toLowerCase()} style={{ textDecoration: 'none' }}>
+
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center" sx={{ color: 'black' }}>{page}</Typography>
+                  </MenuItem>
+                </NextLink>
               ))}
             </Menu>
           </Box>
@@ -126,13 +133,17 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <ColorButton
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </ColorButton>
+              <NextLink href={page.toLowerCase()} style={{ textDecoration: 'none' }}>
+
+                <ColorButton
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </ColorButton>
+              </NextLink>
+
             ))}
           </Box>
 

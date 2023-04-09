@@ -34,11 +34,13 @@ export const Footer: FC = (): ReactElement => {
           </Grid>
           <Grid item xs={12}>
             <Stack direction="row" spacing={1}>
-              <IconButton   aria-label="add to shopping cart">
-                <GitHubIcon sx={{
-                  color: "secondary.light"
-                }}/>
-              </IconButton>
+              <NextLink href="https://github.com/orgs/Avniya/dashboard" passHref style={{ textDecoration: "none" }}>
+                <IconButton aria-label="add to shopping cart">
+                  <GitHubIcon sx={{
+                    color: "secondary.light"
+                  }} />
+                </IconButton>
+              </NextLink>
             </Stack>
             {/* <Typography color="textSecondary" variant="subtitle1">
               {`${new Date().getFullYear()} | React | Material UI | React Router`}
