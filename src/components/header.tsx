@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { styled } from '@mui/material/styles';
 import { purple, grey } from '@mui/material/colors';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Products'];
 
 
 const settings = ['Profile', 'Account', 'My Orders', 'Logout'];
@@ -26,7 +26,7 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   // backgroundColor: purple[500],
   textDecorationColor: grey[500],
   '&:hover': {
-    backgroundColor: purple[700],
+    backgroundColor: "secondary",
   },
 }));
 

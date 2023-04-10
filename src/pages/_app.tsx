@@ -14,6 +14,7 @@ import { CssBaseline, Paper } from '@mui/material';
 import MainLayout from "@/layout/mainLayout";
 import { Provider } from "react-redux";
 import store from '@/app/store';
+import { useRouter } from "next/router";
 
 export const muiCache = createCache({
   key: 'mui',
@@ -38,14 +39,20 @@ export interface MyAppProps extends AppProps {
 
 
 export default function App({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) {
+  const router = useRouter();
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <CacheProvider value={emotionCache}>
-        <MainLayout>
+        {router.pathname !== "/" ? (
+          <MainLayout>
           <Component {...pageProps} />
         </MainLayout>
+        ) : (
+          <Component {...pageProps} />
+        )}
+        
       </CacheProvider>
     </ThemeProvider>
     </Provider>
