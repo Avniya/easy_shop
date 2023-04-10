@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { useAppSelector, useAppDispatch } from '@/app/hooks';
 import { setName, setEmail, setImage, createUser } from '@/features/user/userSlice';
@@ -6,17 +6,15 @@ import { Button, CssBaseline, TextField, Box, Typography, Container, Modal, Icon
 
 const Login = () => {
 
-  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
-
-  const toggleModal = () => setOpen(!open);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
-
+  
+  const dispatch = useAppDispatch();
+  const userState = useAppSelector((state) => state.user);
   const name = useAppSelector((state) => state.user.name);
   const email = useAppSelector((state) => state.user.email);
   const image = useAppSelector((state) => state.user.image);
-  const userState = useAppSelector((state) => state.user);
 
   const style = {
     position: 'absolute',
@@ -38,7 +36,7 @@ const Login = () => {
       image :image
     }
     dispatch(createUser(user));
-    handleOpen();
+    handleClose();
     localStorage.setItem('user', JSON.stringify(userState));
   }
 
@@ -64,6 +62,15 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    let userExist = JSON.parse(localStorage.getItem("user"));
+    if(userExist){
+      dispatch(setName(userExist.name));
+      dispatch(setEmail(userExist.email));
+      dispatch(setImage(userExist.image));
+    }
+  }, []);
+
   return (
     <div>
       <Button onClick={handleOpen}>Open modal</Button>
@@ -80,7 +87,7 @@ const Login = () => {
             Login In
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <Avatar alt="Profile Picture" src={image} sx={{ width: 100, height: 100, margin: "auto" }}/>
+          <Avatar alt="Profile Picture" src={image} sx={{ width: 100, height: 100, margin: "auto" }} />
           <IconButton color="primary" aria-label="upload picture" component="label" sx={{ margin: "auto" }}>
             <input hidden accept="image/*" type="file" onChange={(e) => uploadProfileImage(e.target.files[0])}/>
             <PhotoCamera />
