@@ -5,6 +5,7 @@ type InitialState = {
     email : string
     image : string
 }
+
 const initialState : InitialState = {
     name : '',
     email : '',
