@@ -1,14 +1,12 @@
-import Login from "@/components/login/Login";
-// import SelectTheme from "@/components/selectTheme";
+import Home from "@/components/Landing/Home";
 
 export default function Landing() {
   
   return (
     <div>
       <main>
-        <Login />
-        {/* <SelectTheme /> */}
+        <Home/>
       </main>
     </div>
   );
-}
+};
