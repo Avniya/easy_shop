@@ -1,15 +1,14 @@
 import React from 'react';
-import { Paper, Button } from '@mui/material';
+import { Paper } from '@mui/material';
+interface propsType {
+  image: string,
+}
 
-const Item = (props:any) => {
+const Item : React.FC<propsType> = ({image}) => {
+
   return (
     <Paper>
-        <h2>{props.item.name}</h2>
-        <p>{props.item.description}</p>
-
-        <Button className="CheckButton">
-            Check it out!
-        </Button>
+       <img src={image} alt={image} style={{width:"100%", height:"50vh"}}/>
     </Paper>
   )
 }
