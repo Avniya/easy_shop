@@ -1,5 +1,13 @@
 import { createTheme } from '@mui/material/styles';
 import { Phudu } from 'next/font/google';
+
+// it could be your App.tsx file or theme file that is included in your tsconfig.json
+import { Theme } from '@mui/material/styles';
+
+declare module '@mui/styles/defaultTheme' {
+  interface DefaultTheme extends Theme {}
+}
+
 const phudu = Phudu({
   weight:["400","500","600","700"],
   style:["normal"],
